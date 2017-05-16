@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Vahay-{{ vahay.name }}{% endblock %}
 
 {% block body %}
 
@@ -20,5 +21,26 @@
 	{% if vahay.owner == user %}
 		<button class="btn btn-success">Edit Info</button>
 	{% endif %}
+
+	<br><h4>Reviews</h4>
+	<form action="{% url 'vahay:add_comment' vahay.pk %}" method="POST">
+		{% csrf_token %}
+        <textarea name="content" id="" cols="10" rows="3" class="form-control" placeholder="comment"></textarea>
+        <button class="btn btn-primary tweet-btn">comment</button>
+	</form>
+
+	<div class="col-md-6 col-md-offset-3">
+        {% for review in reviews %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="{% url 'profile' user.username %}">{{ review.user.get_full_name }}</a>
+                    <span class="text-muted">{{ review.when_created|date:'D M d, Y f A' }}</span>
+                </div>
+                <div class="panel-body">
+                    <pre>{{ review.content }}</pre>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

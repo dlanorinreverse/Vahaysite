@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
 from .models import Vahay
+from .models import Review
 # Create your views here.
 
 def vahay_details(request, pk):
@@ -12,7 +13,12 @@ def vahay_details(request, pk):
 		return redirect('/')
 
 	vahay = get_object_or_404(Vahay, pk=pk)
-	return render(request, 'vahay/vahayDetails.html', {'vahay': vahay})
+	reviews = Review.objects.filter(vahay=vahay).order_by('-when_created')
+	context={
+		'vahay': vahay,
+		'reviews': reviews
+	}
+	return render(request, 'vahay/vahayDetails.html', context=context)
 
 
 def add_vahay(request, username):
@@ -29,4 +35,29 @@ def add_vahay(request, username):
 		 contact_details=contact_details, location=location)
 		return redirect(reverse('profile', kwargs={'username': request.user.username}))
 
-	return render(request, 'vahay/addVahay.html')			
+	return render(request, 'vahay/addVahay.html')
+
+
+def add_comment(request, pk):
+	if not request.user.is_authenticated:
+		return redirect('/')
+
+	context={}
+
+	if request.method == "POST":
+		vahay = get_object_or_404(Vahay, pk=pk)
+		content = request.POST.get('content')
+		Review.objects.create(user=request.user, vahay=vahay, content=content)
+		reviews = Review.objects.filter(vahay=vahay).order_by('-when_created')
+		context['vahay'] = vahay
+		context['reviews'] = reviews
+		
+	return render(request, 'vahay/vahayDetails.html', context=context)
+
+
+
+
+
+
+
+

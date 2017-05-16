@@ -29,7 +29,9 @@ class Vahay(models.Model):
 
 class Review(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	comment = models.CharField(max_length=500)
+	vahay = models.ForeignKey(Vahay, on_delete=models.CASCADE)
+	content = models.CharField(max_length=500)
+	when_created = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
-		return self.user.username + " - " + self.comment
+		return self.user.username + " - " + self.content
