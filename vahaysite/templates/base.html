@@ -32,7 +32,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="">
-						<a href="#">
+						<a href="{% url 'profile' user.username %}">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;
 							{% block user %}{{ user.username }}{% endblock %}
 						</a>

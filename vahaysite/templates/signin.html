@@ -14,5 +14,9 @@
 		<input type="password" id="password" name="password">
 		<button>Login</button>
     </form>
+
+    <form action="{% url 'registration:sign_up' %}" method="POST">
+    	<button class="btn btn-success">Sign Up</button>
+    </form>
 </body>
 </html>

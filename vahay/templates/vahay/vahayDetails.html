@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+	<h1>Vahay Details</h1>
+	<h3>Name: {{ vahay.name }}</h3>
+	<p>Rating: {{ vahay.rating }}</p>
+	<p>Owner: {{ vahay.owner }}</p>
+	<p>Category: {{ vahay.category }}</p>
+	<p>Rent-range(Php): {{ vahay.rent_range }}</p>
+	<p>Contact details: {{ vahay.contact_details }}</p>
+	<p>Location: {{ vahay.location }}</p>
+
+	{% if vahay.isAvailable %}
+		<p>Now Available</p>
+	{% else %}
+		<p>Not Available</p>
+	{% endif %}
+
+	{% if vahay.owner == user %}
+		<button class="btn btn-success">Edit Info</button>
+	{% endif %}
+
+{% endblock %}

@@ -4,7 +4,7 @@
 	<h1>Homepage</h1><br>
 	<ul>
 		{% for vahay in all_vahay %}
-			<li><a href="#">{{ vahay }}</a></li>
+			<li><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}

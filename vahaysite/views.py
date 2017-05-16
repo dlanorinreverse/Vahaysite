@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 
 from vahay.models import Vahay
 # Create your views here.
@@ -29,6 +30,18 @@ def home(request):
 			context['username'] = username
 				
 	return render(request, 'signin.html', context=context)
+
+
+def profile(request, username):
+	if not request.user.is_authenticated:
+		return redirect('/')
+
+	user = get_object_or_404(User, username=username)
+	vahays =  user.vahay_set.all()
+	context = {
+		'vahays':vahays
+	}
+	return render(request, 'profile.html', context=context)
 
 
 def sign_out(request):
