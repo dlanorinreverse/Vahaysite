@@ -21,9 +21,6 @@
 		<p>You don't have Vahay to manage</p>
 	{% endif %}<br>
 
-	<form action="{% url 'vahay:add_vahay' user.username %}" method="POST">
-		{% csrf_token %}	
-		<button type="submit" class="btn btn-success">Add Vahay</button>
-	</form>
+	<a href="{% url 'vahay:add_vahay' user.username %}" class="btn btn-success">Add Vahay</a>
 
 {% endblock %}

@@ -36,8 +36,7 @@ def profile(request, username):
 	if not request.user.is_authenticated:
 		return redirect('/')
 
-	user = get_object_or_404(User, username=username)
-	vahays =  user.vahay_set.all()
+	vahays =  request.user.vahay_set.all()
 	context = {
 		'vahays':vahays
 	}
