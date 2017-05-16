@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign in</title>
+</head>
+<body>
+	<h1>Sign in</h1>
+	{{ error_message }}
+	<form action="{% url 'home' %}" method="POST">
+		{% csrf_token %}
+		<label for="username">Username: </label>
+		<input type="text" id="username" name="username" value="{{ user.username }}">
+		<label for="password">Password: </label>
+		<input type="password" id="password" name="password">
+		<button>Login</button>
+    </form>
+</body>
+</html>

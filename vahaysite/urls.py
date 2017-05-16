@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
+from . import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+	url(r'^$', views.home, name='home'),
+	url(r'^sign-out/$', views.sign_out, name='sign_out'),
+    # url(r'^(?P<username>\w+)/$', views.profile, name='profile')
+    
+   	url(r'^admin/', admin.site.urls),
 ]

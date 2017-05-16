@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+	
+{% block body %}
+	<h1>Homepage</h1><br>
+	<ul>
+		{% for vahay in all_vahay %}
+			<li><a href="#">{{ vahay }}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+
