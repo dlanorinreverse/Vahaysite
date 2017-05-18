@@ -42,17 +42,14 @@ def add_comment(request, pk):
 	if not request.user.is_authenticated:
 		return redirect('/')
 
-	context={}
+	redirect_url = request.GET.get('next')
 
 	if request.method == "POST":
 		vahay = get_object_or_404(Vahay, pk=pk)
 		content = request.POST.get('content')
 		Review.objects.create(user=request.user, vahay=vahay, content=content)
-		reviews = Review.objects.filter(vahay=vahay).order_by('-when_created')
-		context['vahay'] = vahay
-		context['reviews'] = reviews
 		
-	return render(request, 'vahay/vahayDetails.html', context=context)
+	return redirect(redirect_url)
 
 
 def edit_vahay(request, pk):
@@ -85,16 +82,16 @@ def vote_vahay(request, pk):
 	if not request.user.is_authenticated:
 		return redirect('/')
 
-	vahay = get_object_or_404(Vahay, pk=pk)
-	reviews = Review.objects.filter(vahay=vahay).order_by('-when_created')
-	vahay.vote += 1
-	vahay.save()
+	redirect_url = request.GET.get('next')
 
-	context = {
-		'vahay': vahay,
-		'reviews': reviews
-	}
-	return render(request, 'vahay/vahayDetails.html', context=context)
+	if request.method == "POST":
+		vahay = get_object_or_404(Vahay, pk=pk)
+		vahay.vote += 1
+		vahay.save()
+		return redirect(redirect_url)
+
+	return redirect('/')
+
 
 
 
