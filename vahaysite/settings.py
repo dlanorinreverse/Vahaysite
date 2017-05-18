@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'vahaysite',
     'vahay',
+    'registration'
 ]
 
 MIDDLEWARE = [
