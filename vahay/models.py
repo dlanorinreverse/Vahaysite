@@ -13,7 +13,7 @@ class Vahay(models.Model):
 	rent_range = models.CharField(max_length=100)
 	category = models.CharField(max_length=100)
 	contact_details = models.CharField(max_length=100)
-	rating = models.IntegerField(default=0)
+	vote = models.IntegerField(default=0)
 	location = models.CharField(max_length=255)
 	available = models.BooleanField(default=1)
 

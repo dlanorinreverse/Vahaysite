@@ -81,4 +81,20 @@ def edit_vahay(request, pk):
 	return render(request, 'vahay/editVahay.html', context=context)
 
 
+def vote_vahay(request, pk):
+	if not request.user.is_authenticated:
+		return redirect('/')
+
+	vahay = get_object_or_404(Vahay, pk=pk)
+	reviews = Review.objects.filter(vahay=vahay).order_by('-when_created')
+	vahay.vote += 1
+	vahay.save()
+
+	context = {
+		'vahay': vahay,
+		'reviews': reviews
+	}
+	return render(request, 'vahay/vahayDetails.html', context=context)
+
+
 

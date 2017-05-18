@@ -50,7 +50,6 @@ def edit_profile(request):
 		return redirect('/')
 
 	if request.method == "POST":
-		request.user.username = request.POST.get('username')
 		request.user.first_name = request.POST.get('first_name')
 		request.user.last_name = request.POST.get('last_name')
 		request.user.email = request.POST.get('email')

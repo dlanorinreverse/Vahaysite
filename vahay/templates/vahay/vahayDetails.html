@@ -5,7 +5,7 @@
 	
 	<h1>Vahay Details</h1>
 	<h3>Name: {{ vahay.name }}</h3>
-	<p>Rating: {{ vahay.rating }}</p>
+	<p>Votes: {{ vahay.vote }}</p>
 	<p>Owner: {{ vahay.owner }}</p>
 	<p>Category: {{ vahay.category }}</p>
 	<p>Rent-range(Php): {{ vahay.rent_range }}</p>
@@ -21,15 +21,17 @@
 	{% if vahay.owner == user %}
 		<a href="{% url 'vahay:edit_vahay' vahay.pk %}" class="btn btn-primary">Edit Vahay</a>
 	{% else %}
-		<a href="#" class="btn btn-success">Rate now</a>
+		<a href="{% url 'vahay:vote_vahay' vahay.pk %}" class="btn btn-success">Vote</a>
 	{% endif %}
 
 	<br><h4>Reviews</h4>
-	<form action="{% url 'vahay:add_comment' vahay.pk %}" method="POST">
-		{% csrf_token %}
-        <textarea name="content" id="" cols="10" rows="3" class="form-control" placeholder="comment"></textarea>
-        <button class="btn btn-primary tweet-btn">comment</button>
-	</form>
+	<div class="col-md-6 col-md-offset-3">
+		<form action="{% url 'vahay:add_comment' vahay.pk %}" method="POST">
+			{% csrf_token %}
+	        <textarea name="content" id="" cols="10" rows="3" class="form-control" placeholder="comment"></textarea>
+	        <button class="btn btn-primary tweet-btn">comment</button>
+		</form><br>
+	</div>
 
 	<div class="col-md-6 col-md-offset-3">
         {% for review in reviews %}
