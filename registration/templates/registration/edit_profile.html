@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+	<h3>Edit profile</h3>
+
+	<div class="col-sm-11 col-md-5 col-lg-3">
+		<form class="form-horizontal" action="{% url 'registration:edit_profile' %}" method="POST">
+			{% csrf_token %}
+			<div class="form-group">
+				<input type="text" name="username" class="form-control" placeholder="username" value="{{ user.username }}">
+			</div>
+			<div class="form-group">
+				<input type="text" name="first_name" class="form-control" placeholder="first name" value="{{ user.first_name }}">
+			</div>
+			<div class="form-group">
+				<input type="text" name="last_name" class="form-control" placeholder="last name" value="{{ user.last_name }}">
+			</div>
+			<div class="form-group">
+				<input type="text" name="email" class="form-control" placeholder="email" value="{{ user.email }}">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-success">Save</button>
+			</div>
+		</form>
+		<a href="{% url 'profile' user.username %}" class="btn btn-danger">Cancel</a>
+	</div>
+
+{% endblock %}

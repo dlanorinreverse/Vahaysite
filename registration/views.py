@@ -45,4 +45,23 @@ def sign_up(request):
 	return render(request, 'registration/signup.html', context=context)
 
 
-	
+def edit_profile(request):
+	if not request.user.is_authenticated:
+		return redirect('/')
+
+	if request.method == "POST":
+		request.user.username = request.POST.get('username')
+		request.user.first_name = request.POST.get('first_name')
+		request.user.last_name = request.POST.get('last_name')
+		request.user.email = request.POST.get('email')
+		request.user.save()
+		return redirect(reverse('profile', kwargs={'username': request.user.username}))
+
+	return render(request, 'registration/edit_profile.html')
+
+
+
+
+
+
+
