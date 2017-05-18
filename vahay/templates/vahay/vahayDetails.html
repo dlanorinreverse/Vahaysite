@@ -2,7 +2,7 @@
 {% block title %}Vahay-{{ vahay.name }}{% endblock %}
 
 {% block body %}
-
+	
 	<h1>Vahay Details</h1>
 	<h3>Name: {{ vahay.name }}</h3>
 	<p>Rating: {{ vahay.rating }}</p>
@@ -15,11 +15,13 @@
 	{% if vahay.isAvailable %}
 		<p>Now Available</p>
 	{% else %}
-		<p>Not Available</p>
+		<p style="color:red">Not Available</p>
 	{% endif %}
 
 	{% if vahay.owner == user %}
-		<a href="" class="btn btn-primary">Edit Vahay</a>
+		<a href="{% url 'vahay:edit_vahay' vahay.pk %}" class="btn btn-primary">Edit Vahay</a>
+	{% else %}
+		<a href="#" class="btn btn-success">Rate now</a>
 	{% endif %}
 
 	<br><h4>Reviews</h4>
