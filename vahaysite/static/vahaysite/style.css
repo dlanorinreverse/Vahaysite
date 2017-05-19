@@ -1,0 +1,25 @@
+.navbar{
+	border-radius: 0;
+	/*background-color: red;*/
+}
+
+.navbar-brand{
+	font-family: 'Satisfy', cursive;
+}
+
+#carousel{
+	max-width: 700px; 
+	margin: 0 auto;
+}
+
+.carousel-inner{
+	max-height: 350px !important;
+}
+
+.item img {
+  width:100%;
+}
+
+/*.info{
+	text-align: center;
+}*/

@@ -26,7 +26,7 @@ def home(request):
 			login(request, user)
 			return render(request, 'homepage.html', context=context)
 		else:
-			context['error_message'] = 'wrong username or password'
+			context['error_message'] = 'Invalid username or password'
 			context['username'] = username
 				
 	return render(request, 'signin.html', context=context)
