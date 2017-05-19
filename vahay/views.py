@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from .models import Vahay
 from .models import Review
+from .models import Image
 # Create your views here.
 
 def vahay_details(request, pk):
@@ -14,9 +15,11 @@ def vahay_details(request, pk):
 
 	vahay = get_object_or_404(Vahay, pk=pk)
 	reviews = Review.objects.filter(vahay=vahay).order_by('-when_created')
+	images = Image.objects.filter(vahay=vahay)
 	context={
 		'vahay': vahay,
-		'reviews': reviews
+		'reviews': reviews,
+		'images': images
 	}
 	return render(request, 'vahay/vahayDetails.html', context=context)
 

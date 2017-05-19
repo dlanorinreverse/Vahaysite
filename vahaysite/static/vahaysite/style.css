@@ -8,18 +8,14 @@
 }
 
 #carousel{
-	max-width: 700px; 
+	width: 720px; 
 	margin: 0 auto;
 }
 
 .carousel-inner{
-	max-height: 350px !important;
+	max-height: 400px !important;
 }
 
 .item img {
   width:100%;
 }
-
-/*.info{
-	text-align: center;
-}*/

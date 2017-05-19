@@ -37,6 +37,16 @@ class Review(models.Model):
 		return self.user.username + " - " + self.content
 
 
+class Image(models.Model):
+	vahay = models.ForeignKey(Vahay, on_delete=models.CASCADE)
+	link = models.CharField(max_length=1000)
+
+	def __str__(self):
+		return self.vahay.name + " - " + self.link
+
+
+
+
 
 
 
