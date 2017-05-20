@@ -3,34 +3,35 @@
 
 {% block body %}
 
-	<h1>Create vahay</h1><br>
-	
-   <div class="container container-fluid">
-		<div class="row">
-			<div class="col-sm-11 col-md-5 col-lg-3">
+	<div class="panel panel-default col-sm-4 col-md-4 col-lg-4 col-lg-offset-4 add_vahay">
+	  	<div class="panel-body ">
+			<h4 style="text-align: center;">Create vahay</h4>
 				<form class="form-horizontal" action="{% url 'vahay:add_vahay' user.username %}" method="POST">
 					{% csrf_token %}
 					<div class="form-group">
-						<input type="text" name="name" class="form-control" placeholder="name">
-				   	</div>
-				   	<div class="form-group">
-						<input type="text" name="category" class="form-control" placeholder="category">
-				   	</div>
-				   	<div class="form-group">
-						<input type="text" name="rent_range" class="form-control" placeholder="rent-range">
+						<input type="text" name="name" class="form-control" placeholder="Name">
+				   </div>
+				   <div class="form-group">
+						<input type="text" name="category" class="form-control" placeholder="Category">
+				   </div>
+				   <div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon" id="rent">Php</span>
+							<input type="text" name="rent_range" class="form-control" placeholder="Rent-range" aria-describedby="rent">
+						</div>
 					</div>
 				  	<div class="form-group">
-						<input type="text" name="contacts" class="form-control" placeholder="contacts">
-				   	</div>
-				   	<div class="form-group">
-						<input type="text" name="location" class="form-control" placeholder="location">
-				   	</div>
+						<input type="text" name="contacts" class="form-control" placeholder="Contact">
+				   </div>
+				   <div class="form-group">
+						<input type="text" name="location" class="form-control" placeholder="Location">
+				   </div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-success">Add Vahay</button>
+						<button type="submit" class="btn btn-success col-lg-offset-7"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Create</button>
+						<a href="{% url 'profile' user.username %}" class="btn btn-danger">Cancel</a>
 					</div>
 				</form>
-			</div>
-		</div>
+	  	</div>
 	</div>
 
 {% endblock %}

@@ -41,6 +41,13 @@ def add_vahay(request, username):
 	return render(request, 'vahay/addVahay.html')
 
 
+def delete_vahay(request, pk):
+	vahay = get_object_or_404(Vahay, pk=pk)
+	vahay.delete()
+
+	return redirect(reverse('profile', kwargs={'username': request.user.username}))
+
+
 def add_comment(request, pk):
 	if not request.user.is_authenticated:
 		return redirect('/')

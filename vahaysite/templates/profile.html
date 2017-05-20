@@ -23,7 +23,13 @@
 			<h3>Vahay you manage</h3>
 			{% for vahay in vahays %}
 				<ul>
-					<li><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></li>
+					<li>
+						<form action="{% url 'vahay:delete_vahay' vahay.pk %}" method="POST">
+							{% csrf_token %}
+							<a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a>
+							<button type="submit">Delete</button>
+						</form>
+					</li>
 				</ul>
 			{% endfor %}
 

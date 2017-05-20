@@ -9,4 +9,5 @@ urlpatterns = [
 	url(r'^vahay-details/(?P<pk>\d+)/add_comment$', views.add_comment, name='add_comment'),
 	url(r'^(?P<pk>\d+)/edit-vahay/$', views.edit_vahay, name='edit_vahay'),
 	url(r'^(?P<pk>\d+)/vote-vahay/$', views.vote_vahay, name='vote_vahay'),
+	url(r'^delete-vahay/(?P<pk>\d+)/$', views.delete_vahay, name='delete_vahay'),
 ]

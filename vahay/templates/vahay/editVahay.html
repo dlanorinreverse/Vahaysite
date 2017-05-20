@@ -27,19 +27,11 @@
 				</div>
 				{% if vahay.isAvailable %}
 			   <div class="form-group">
-				   <div class="input-group">
-				      <span class="input-group-addon"><input type="checkbox" name="available" id="ava1" checked></span>
-				      <input type="text" class="form-control" aria-describedby="ava1" 
-				      placeholder="Available" disabled>
-				   </div>
+				    <input type="checkbox" name="available" checked>&nbsp;&nbsp;Available
 			   </div>
 			   {% else %}
 			   <div class="form-group">
-				   <div class="input-group">
-				      <span class="input-group-addon"><input type="checkbox" name="available" id="ava2"></span>
-				      <input type="text" class="form-control" aria-describedby="ava2" 
-				      placeholder="Available" disabled>
-				   </div>
+				   <input type="checkbox" name="available">&nbsp;&nbsp;Available
 			   </div>
 			   {% endif %}<br>
 			   <label for="basic-url">Add Image</label>
@@ -50,7 +42,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-success col-lg-offset-8">Save</button>
+					<button type="submit" class="btn btn-success col-lg-offset-8"><span class="glyphicon glyphicon-save" aria-hidden="true"></span>&nbsp;Save</button>
 					<a href="{% url 'vahay:vahay_details' vahay.pk %}" class="btn btn-danger">Cancel</a>
 				</div>
 			</form>
