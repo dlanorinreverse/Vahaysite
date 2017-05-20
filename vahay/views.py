@@ -34,8 +34,9 @@ def add_vahay(request, username):
 		category = request.POST.get('category')
 		contact_details = request.POST.get('contacts')
 		location = request.POST.get('location')
+		details = request.POST.get('details')
 		Vahay.objects.create(owner=request.user, name=name, rent_range=rent_range, category=category,
-		 contact_details=contact_details, location=location)
+		 contact_details=contact_details, location=location, description=details)
 		return redirect(reverse('profile', kwargs={'username': request.user.username}))
 
 	return render(request, 'vahay/addVahay.html')
@@ -77,6 +78,7 @@ def edit_vahay(request, pk):
 		vahay.category = request.POST.get('category')
 		vahay.contact_details = request.POST.get('contacts')
 		vahay.location = request.POST.get('location')
+		vahay.description = request.POST.get('description')
 		if request.POST.get('available', None) == None:
 			vahay.available = 0
 		else:

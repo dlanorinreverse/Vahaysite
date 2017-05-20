@@ -1,44 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ user.username }}{% endblock %}
+{% block title %}{{ user.first_name}} {{user.last_name}}{% endblock %}
 
 {% block body %}
 
-	<section class="profile_info">
-		<div class="panel panel-default col-lg-4 ">
+	<div class="profile_info">
+		<div class="panel panel-default col-lg-6 col-lg-offset-3">
 			<div class="panel-body">
-				<p>Username: {{ user.username }}</p>
+				<h4>{{ user.username.upper }}</h4><br>
 				<p>First Name: {{ user.first_name}}</p>
 				<p>Last Name: {{ user.last_name }}</p>
 				<p>Email: {{ user.email }}</p>
 				<p>Date Joined: {{ user.date_joined }}</p>
-				<a href="{% url 'registration:edit_profile' %}" class="btn btn-success">Edit Profile</a>
+				<a href="{% url 'registration:edit_profile' %}" class="btn btn-sm btn-success col-lg-offset-10"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Edit Profile</a>
 			</div>
 		</div>
-	</section>
+	</div>
 
-	<section class="managed_vahay">
-		<div class="panel panel-default col-lg-4 col-lg-offset-3">
+	<div class="manage_vahay">
+		<div class="panel panel-default col-lg-6 col-lg-offset-3">
 			<div class="panel-body">
-			<h3>Vahay you manage</h3>
-			{% for vahay in vahays %}
-				<ul>
-					<li>
-						<form action="{% url 'vahay:delete_vahay' vahay.pk %}" method="POST">
-							{% csrf_token %}
+				<h4>Vahay you manage</h4><br>
+				{% for vahay in vahays %}
+					<ul>
+						<li>
 							<a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a>
-							<button type="submit">Delete</button>
-						</form>
-					</li>
-				</ul>
-			{% endfor %}
+						</li>
+					</ul>
+				{% endfor %}
 
-			{% if user.vahay_set.count <= 0 %}
-				<p>You don't have Vahay to manage</p>
-			{% endif %}<br>
-			<a href="{% url 'vahay:add_vahay' user.username %}" class="btn btn-success">Add Vahay</a>
+				{% if user.vahay_set.count <= 0 %}
+					<p>You don't have Vahay to manage</p>
+				{% endif %}<br>
+				<a href="{% url 'vahay:add_vahay' user.username %}" class="btn btn-sm btn-primary col-lg-offset-10"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Vahay</a>
 			</div>
 		</div>
-	</section>
+	</div>
 	
 {% endblock %}

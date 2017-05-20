@@ -39,4 +39,32 @@
 	text-align: center;
 }
 
+.profile_info .panel{
+	margin-top: 50px;
+}
+
+.manage_vahay .panel{
+	margin-top: 50px;
+}
+
+.manage_vahay h4, .profile_info h4{
+	font-family: 'Roboto Slab', serif;
+	text-align: center;
+	font-size: 2em;
+}
+
+.manage_vahay li{
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.1em;
+}
+
+.profile_info p{
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.1em;
+}
+
+
+
+
+
 

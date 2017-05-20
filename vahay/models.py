@@ -16,6 +16,8 @@ class Vahay(models.Model):
 	vote = models.IntegerField(default=0)
 	location = models.CharField(max_length=255)
 	available = models.BooleanField(default=1)
+	description = models.CharField(max_length=500, null=True)
+
 
 	def __str__(self):
 		return self.name + " - " + self.location
