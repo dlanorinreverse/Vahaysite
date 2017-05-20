@@ -26,6 +26,9 @@ class Vahay(models.Model):
 		else:
 			return False
 
+	def getOwner(self):
+		return self.owner.last_name + ", " + self.owner.first_name
+
 
 class Review(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)

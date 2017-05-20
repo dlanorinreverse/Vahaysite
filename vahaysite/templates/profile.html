@@ -5,7 +5,7 @@
 {% block body %}
 
 	<section class="profile_info">
-		<div class="panel panel-default">
+		<div class="panel panel-default col-lg-4 ">
 			<div class="panel-body">
 				<p>Username: {{ user.username }}</p>
 				<p>First Name: {{ user.first_name}}</p>
@@ -18,18 +18,21 @@
 	</section>
 
 	<section class="managed_vahay">
-		<h3>Vahay you manage</h3>
-		{% for vahay in vahays %}
-			<ul>
-				<li><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></li>
-			</ul>
-		{% endfor %}
+		<div class="panel panel-default col-lg-4 col-lg-offset-3">
+			<div class="panel-body">
+			<h3>Vahay you manage</h3>
+			{% for vahay in vahays %}
+				<ul>
+					<li><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></li>
+				</ul>
+			{% endfor %}
 
-		{% if user.vahay_set.count <= 0 %}
-			<p>You don't have Vahay to manage</p>
-		{% endif %}<br>
-
-		<a href="{% url 'vahay:add_vahay' user.username %}" class="btn btn-success">Add Vahay</a>
+			{% if user.vahay_set.count <= 0 %}
+				<p>You don't have Vahay to manage</p>
+			{% endif %}<br>
+			<a href="{% url 'vahay:add_vahay' user.username %}" class="btn btn-success">Add Vahay</a>
+			</div>
+		</div>
 	</section>
 	
 {% endblock %}
