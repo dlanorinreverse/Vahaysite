@@ -5,6 +5,7 @@
 	<title>{% block title %}Vahay{% endblock %}</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{% static 'vahaysite/style.css' %}">
 </head>
 <body>
@@ -31,13 +32,13 @@
 				</form>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li class="">
+					<li>
 						<a href="{% url 'profile' user.username %}">
 							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;
 							{% block user %}{{ user.username }}{% endblock %}
 						</a>
 					</li>
-					<li class="">
+					<li>
 						<a href="{% url 'sign_out' %}">
 							<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;log out
 						</a>

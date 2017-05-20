@@ -2,41 +2,60 @@
 {% block title %}Vahay-Edit{% endblock %}
 
 {% block body %}
-	<h3>Edit Vahay</h3>
-
-	<div class="col-sm-11 col-md-5 col-lg-3">
-		<form class="form-horizontal" action="{% url 'vahay:edit_vahay' vahay.pk %}" method="POST">
-			{% csrf_token %}
-			<div class="form-group">
-				<input type="text" name="vahay_name" class="form-control" placeholder="name" value="{{ vahay.name }}">
-			</div>
-			<div class="form-group">
-				<input type="text" name="category" class="form-control" placeholder="category" value="{{ vahay.category }}">
-			</div>
-			<div class="form-group">
-				<input type="text" name="rent_range" class="form-control" placeholder="rent-range" value="{{ vahay.rent_range }}">
-			</div>
-			<div class="form-group">
-				<input type="text" name="contacts" class="form-control" placeholder="contact details" value="{{ vahay.contact_details }}">
-			</div>
-			<div class="form-group">
-				<input type="text" name="location" class="form-control" placeholder="location" value="{{ vahay.location }}">
-			</div>
-			{% if vahay.isAvailable %}
-			<div class="input-group">
-		      <input name="available" type="checkbox" checked>Available
-		   </div>
-		   {% else %}
-		   <div class="input-group">
-		      <input name="available" type="checkbox">Available
-		   </div>
-		   {% endif %}
-			<div class="form-group">
-				<button type="submit" class="btn btn-success">Save</button>
-				<a href="{% url 'vahay:vahay_details' vahay.pk %}" class="btn btn-danger">Cancel</a>
-			</div>
-		</form>
-		
+	<div class="panel panel-default col-sm-4 col-md-4 col-lg-4 col-lg-offset-4 edit_vahay">
+	  	<div class="panel-body ">
+			<h4 style="text-align: center;">Edit vahay</h4>
+			<form class="form-horizontal" action="{% url 'vahay:edit_vahay' vahay.pk %}" method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<input type="text" name="vahay_name" class="form-control" placeholder="name" value="{{ vahay.name }}">
+				</div>
+				<div class="form-group">
+					<input type="text" name="category" class="form-control" placeholder="category" value="{{ vahay.category }}">
+				</div>
+				<div class="form-group">
+					<input type="text" name="contacts" class="form-control" placeholder="contact details" value="{{ vahay.contact_details }}">
+				</div>
+				<div class="form-group">
+					<input type="text" name="location" class="form-control" placeholder="location" value="{{ vahay.location }}">
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon" id="rent">Php</span>
+						<input type="text" name="rent_range" class="form-control" placeholder="rent-range" value="{{ vahay.rent_range }}" aria-describedby="rent">
+					</div>
+				</div>
+				{% if vahay.isAvailable %}
+			   <div class="form-group">
+				   <div class="input-group">
+				      <span class="input-group-addon"><input type="checkbox" name="available" id="ava1" checked></span>
+				      <input type="text" class="form-control" aria-describedby="ava1" 
+				      placeholder="Available" disabled>
+				   </div>
+			   </div>
+			   {% else %}
+			   <div class="form-group">
+				   <div class="input-group">
+				      <span class="input-group-addon"><input type="checkbox" name="available" id="ava2"></span>
+				      <input type="text" class="form-control" aria-describedby="ava2" 
+				      placeholder="Available" disabled>
+				   </div>
+			   </div>
+			   {% endif %}<br>
+			   <label for="basic-url">Add Image</label>
+		   	<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon3">Link</span>
+						<input type="text" name="image_link" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success col-lg-offset-8">Save</button>
+					<a href="{% url 'vahay:vahay_details' vahay.pk %}" class="btn btn-danger">Cancel</a>
+				</div>
+			</form>
+	  	</div>
 	</div>
+	
 
 {% endblock %}

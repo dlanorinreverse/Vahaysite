@@ -3,7 +3,9 @@
 
 {% block body %}
 
-	<br><h3 style="text-align: center;">{{ vahay.name }}</h3>
+	<section class="vahay_title">
+		<h3 style="text-align: center;">{{ vahay.name.upper }}
+	</section>
 
 	<section class="gallery">
 		{% if images.count <= 0 %}
@@ -33,28 +35,30 @@
 	</section>
 
 	<section class="info">
-		<div class="col-lg-6 col-lg-offset-3 well">
-			<p>Votes: {{ vahay.vote }}</p>
-			<p>Owner: {{ vahay.owner }}</p>
-			<p>Category: {{ vahay.category }}</p>
-			<p>Rent-range(Php): {{ vahay.rent_range }}</p>
-			<p>Contact details: {{ vahay.contact_details }}</p>
-			<p>Location: {{ vahay.location }}</p>
+		<div class="panel panel-default col-lg-6 col-lg-offset-3">
+			<div class="panel-body">
+				<p>Votes: <span class="badge">{{ vahay.vote }}</span></p>
+				<p>Owner: {{ vahay.owner }}</p>
+				<p>Category: {{ vahay.category }}</p>
+				<p>Rent-range(Php): {{ vahay.rent_range }}</p>
+				<p>Contact details: {{ vahay.contact_details }}</p>
+				<p>Location: {{ vahay.location }}</p>
 
-			{% if vahay.isAvailable %}
-				<p>Now Available</p>
-			{% else %}
-				<p style="color:red">Not Available</p>
-			{% endif %}
+				{% if vahay.isAvailable %}
+					<p style="color:green;">Now Available</p>
+				{% else %}
+					<p style="color:red;">Not Available</p>
+				{% endif %}
 
-			{% if vahay.owner == user %}
-				<a href="{% url 'vahay:edit_vahay' vahay.pk %}" class="btn btn-primary">Edit Vahay</a>
-			{% else %}
-				<form action="{% url 'vahay:vote_vahay' vahay.pk %}?next={{ request.path }}" method="POST">
-					{% csrf_token %}
-					<button class="btn btn-success">Vote</button>
-				</form>
-			{% endif %}
+				{% if vahay.owner == user %}
+					<a href="{% url 'vahay:edit_vahay' vahay.pk %}" class="btn btn-primary">Edit Vahay</a>
+				{% else %}
+					<form action="{% url 'vahay:vote_vahay' vahay.pk %}?next={{ request.path }}" method="POST">
+						{% csrf_token %}
+						<button class="btn btn-success">Vote</button>
+					</form>
+				{% endif %}
+			</div>
 		</div>
 	</section>
 

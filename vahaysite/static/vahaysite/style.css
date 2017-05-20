@@ -1,6 +1,6 @@
 .navbar{
 	border-radius: 0;
-	/*background-color: red;*/
+	/*background-color: green;*/
 }
 
 .navbar-brand{
@@ -19,3 +19,20 @@
 .item img {
   width:100%;
 }
+
+.edit_vahay{
+	margin-top: 50px;
+}
+
+.info p{
+	font-size: 1.2em;
+}
+
+.vahay_title h3{
+	padding: 10px;
+	padding-top: 20px;
+	font-family: 'Roboto Slab', serif;
+	text-align: center;
+}
+
+

@@ -3,24 +3,33 @@
 {% block title %}{{ user.username }}{% endblock %}
 
 {% block body %}
-	<h1>Profile Page</h1>
-	<p>Username: {{ user.username }}</p>
-	<p>First Name: {{ user.first_name}}</p>
-	<p>Last Name: {{ user.last_name }}</p>
-	<p>Email: {{ user.email }}</p>
-	<p>Date Joined: {{ user.date_joined }}</p>
 
-	<h3>Vahay you manage</h3>
-	{% for vahay in vahays %}
-		<ul>
-			<li><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></li>
-		</ul>
-	{% endfor %}
+	<section class="profile_info">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p>Username: {{ user.username }}</p>
+				<p>First Name: {{ user.first_name}}</p>
+				<p>Last Name: {{ user.last_name }}</p>
+				<p>Email: {{ user.email }}</p>
+				<p>Date Joined: {{ user.date_joined }}</p>
+				<a href="{% url 'registration:edit_profile' %}" class="btn btn-success">Edit Profile</a>
+			</div>
+		</div>
+	</section>
 
-	{% if user.vahay_set.count <= 0 %}
-		<p>You don't have Vahay to manage</p>
-	{% endif %}<br>
+	<section class="managed_vahay">
+		<h3>Vahay you manage</h3>
+		{% for vahay in vahays %}
+			<ul>
+				<li><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></li>
+			</ul>
+		{% endfor %}
 
-	<a href="{% url 'vahay:add_vahay' user.username %}" class="btn btn-success">Add Vahay</a>
-	<a href="{% url 'registration:edit_profile' %}" class="btn btn-success">Edit Profile</a>
+		{% if user.vahay_set.count <= 0 %}
+			<p>You don't have Vahay to manage</p>
+		{% endif %}<br>
+
+		<a href="{% url 'vahay:add_vahay' user.username %}" class="btn btn-success">Add Vahay</a>
+	</section>
+	
 {% endblock %}
