@@ -41,6 +41,11 @@
 	margin-top: 50px;
 }
 
+.profile_info p{
+	font-family: 'Roboto Slab', serif;
+	font-size: 1em;
+}
+
 .manage_vahay .panel{
 	margin-top: 50px;
 }
@@ -48,12 +53,7 @@
 .manage_vahay h4, .profile_info h4{
 	font-family: 'Roboto Slab', serif;
 	text-align: center;
-	font-size: 2em;
-}
-
-.profile_info p{
-	font-family: 'Roboto Slab', serif;
-	font-size: 1.1em;
+	font-size: 1.6em;
 }
 
 .login{
@@ -119,3 +119,7 @@ footer {
     margin: 50px 0;
 }
 
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

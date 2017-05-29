@@ -3,11 +3,13 @@
 {% block title %}{{ user.first_name}} {{user.last_name}}{% endblock %}
 
 {% block body %}
-
-	<div class="profile_info">
-		<div class="panel panel-default col-lg-6 col-lg-offset-3">
+	
+	<div class="profile_info col-lg-6 col-lg-offset-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title"><span class="glyphicon glyphicon-user"></span>&nbsp;{{ user.username }}</h4>
+			</div>
 			<div class="panel-body">
-				<h4>{{ user.username.upper }}</h4><br>
 				<p>First Name: {{ user.first_name}}</p>
 				<p>Last Name: {{ user.last_name }}</p>
 				<p>Email: {{ user.email }}</p>
@@ -17,10 +19,12 @@
 		</div>
 	</div>
 
-	<div class="manage_vahay">
-		<div class="panel panel-default col-lg-6 col-lg-offset-3">
+	<div class="manage_vahay  col-lg-6 col-lg-offset-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title"><span class="glyphicon glyphicon-home"></span>&nbsp;Manage your Vahay</h4>
+			</div>
 			<div class="panel-body">
-				<h4>Vahay you manage</h4><br>
 				{% for vahay in vahays %}
 					<p><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></p>
 				{% endfor %}

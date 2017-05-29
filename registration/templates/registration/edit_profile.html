@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
 {% block body %}
-	<h3>Edit profile</h3>
-
-	<div class="col-sm-11 col-md-5 col-lg-3">
+	<h3 style="text-align: center; margin-top: 100px;">Edit profile</h3>
+	<div class="col-lg-3 col-centered">
 		<form class="form-horizontal" action="{% url 'registration:edit_profile' %}" method="POST">
 			{% csrf_token %}
 			<div class="form-group">
