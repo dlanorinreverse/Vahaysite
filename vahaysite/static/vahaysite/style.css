@@ -65,7 +65,7 @@
 
 .signup{
 	position: absolute;
-	top:200px;
+	top:150px;
 }
 
 .title{
@@ -81,14 +81,14 @@
 	font-family: 'Roboto Slab', serif;
 	font-size: 1.5em;
 	color: white;
-	padding-left: 10px;
+	padding: 10px;
 }
 
 .signup_label{
 	font-family: 'Roboto Slab', serif;
 	font-size: 1.5em;
 	color: white;
-	padding-left: 10px;
+	padding: 10px;
 }
 
 html,

@@ -1,34 +1,41 @@
 {% extends 'carousel.html' %}
 	
-{% block title %}Vahay-Sign in{% endblock %}
+{% block title %}Vahay-Sign up{% endblock %}
 	
 {% block content %}
-	<div class="signup col-lg-4 col-lg-offset-4">
+	<div class="title col-lg-6 col-lg-offset-3">
+   	<p>Vahay</p>
+   </div>
+
+	<div class="signup col-lg-3 col-lg-offset-5">
 		<div class="signup_label">Sign Up</div>
-		<form class="form-horizontal" action="{% url 'registration:sign_up' %}" method="POST">
+		<form class="form-horizontal" action="{% url 'registration:sign_up' %}" method="POST" required>
 			{% csrf_token %}
 			<div class="form-group">
-				<input type="text" name="username" class="form-control" placeholder="username">
+				<input type="text" name="username" class="form-control" placeholder="username" required>
 			</div>
 			<div class="form-group">
-				<input type="text" name="first_name" class="form-control" placeholder="first name">
+				<input type="text" name="first_name" class="form-control" placeholder="first name" required>
 			</div>
 			<div class="form-group">
-				<input type="text" name="last_name" class="form-control" placeholder="last name">
+				<input type="text" name="last_name" class="form-control" placeholder="last name" required>
 			</div>
 			<div class="form-group">
-				<input type="text" name="email" class="form-control" placeholder="email">
+				<input type="text" name="email" class="form-control" placeholder="email" required>
 			</div>
 			<div class="form-group">
-				<input type="password" name="password" class="form-control" placeholder="password">
+				<input type="password" name="password" class="form-control" placeholder="password" required>
 			</div>
 			<div class="form-group">
-				<input type="password" name="re_enter_password" class="form-control" placeholder="re-enter password">
+				<input type="password" name="re_enter_password" class="form-control" placeholder="re-enter password" required>
 			</div>
-			{{ pass_error }}
-			{{ username_error }}
 			<div class="form-group">
-				<button type="submit" class="btn btn-success">Sign Up</button>
+				<button type="submit" class="btn btn-primary">Sign Up</button>
+				<a href="{% url 'home' %}" class="btn btn-success">Log in here</a>
+			</div>
+			<div style="color: white;">
+				<em>{{ pass_error }}</em>
+				<em>{{ username_error }}</em>
 			</div>
 		</form>
 	</div>

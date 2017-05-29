@@ -79,7 +79,7 @@ def edit_vahay(request, pk):
 		vahay.rent_range = request.POST.get('rent_range')
 		vahay.category = request.POST.get('category')
 		vahay.contact_details = request.POST.get('contacts')
-		vahay.location = request.POST.get('location')
+		vahay.address = request.POST.get('address')
 		vahay.description = request.POST.get('description')
 		if request.POST.get('available', None) == None:
 			vahay.available = 0
@@ -90,7 +90,7 @@ def edit_vahay(request, pk):
 		if request.POST['image_link']:
 			image_link = request.POST.get('image_link')
 			Image.objects.create(vahay=vahay, link=image_link)
-			return redirect(reverse('profile', kwargs={'username': request.user.username}))
+		return redirect(reverse('profile', kwargs={'username': request.user.username}))
 
 	return render(request, 'vahay/editVahay.html', context=context)
 
