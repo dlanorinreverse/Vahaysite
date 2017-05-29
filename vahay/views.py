@@ -88,7 +88,7 @@ def edit_vahay(request, pk):
 		if request.POST['image_link']:
 			image_link = request.POST.get('image_link')
 			Image.objects.create(vahay=vahay, link=image_link)
-		return redirect(reverse('profile', kwargs={'username': request.user.username}))
+			return redirect(reverse('profile', kwargs={'username': request.user.username}))
 
 	return render(request, 'vahay/editVahay.html', context=context)
 
