@@ -1,70 +1,29 @@
-{% load static %}
+{% extends 'carousel.html' %}
+	
+{% block title %}Vahay-Sign in{% endblock %}
+	
+{% block content %}
+   <div class="title col-lg-6 col-lg-offset-3">
+   	<p>Vahay</p>
+   </div>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Sign in</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="{% static 'vahaysite/style.css' %}">
-</head>
-
-	<div id="myCarousel" class="carousel slide">
-     <div class="carousel-inner">
-         <div class="item active">
-				<div class="fill">
-					<img src="{% static 'vahaysite/background/5.png' %}" alt="image">
-				</div>
-         </div>
-         <div class="item">
-             <div class="fill">
-					<img src="{% static 'vahaysite/background/4.png' %}" alt="iamge">
-				</div>
-         </div>
-         <div class="fill">
-				<img src="{% static 'vahaysite/background/3.png' %}" alt="image">
-			</div>
-			<div class="fill">
-				<img src="{% static 'vahaysite/background/2.png' %}" alt="image">
-			</div>
-			<div class="fill">
-				<img src="{% static 'vahaysite/background/1.png' %}" alt="image">
-			</div>
-     	</div>
-    </div>
-
-	<div class="login col-lg-12">
+	<div class="login col-lg-3 col-lg-offset-5">
+		<div class="login_label">Login</div>
 		<form class="form-horizontal" action="{% url 'home' %}" method="POST">
 			{% csrf_token %}
 			<div class="form-group">
-				<div class="col-sm-3 col-sm-offset-4" style="color:red">
 				{{ error_message }}
-				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-sm-3 col-sm-offset-4">
-					<input type="text" class="form-control" name="username" value="{{ user.username }}" placeholder="username">
-				</div>
+				<input type="text" class="form-control" name="username" value="{{ user.username }}" placeholder="username">
 			</div>
 			<div class="form-group">
-				<div class="col-sm-3 col-sm-offset-4">
-					<input type="password" class="form-control" name="password" placeholder="password">
-				</div>
+				<input type="password" class="form-control" name="password" placeholder="password">
 			</div>
 			<div class="form-group">
-				<div class="col-sm-3 col-sm-offset-4">
-					<button type="submit" class="btn btn-primary">Sign in</button> or
-					<a href="{% url 'registration:sign_up' %}" class="btn btn-success">Sign up</a>
-				</div>
+				<button type="submit" class="btn btn-primary">Sign in</button><span style="color:white;"> or</span>
+				<a href="{% url 'registration:sign_up' %}" class="btn btn-success">Sign up here</a>
 			</div>	
 	   </form>
    </div>
-
-
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script type="text/javascript">
-		$('.carousel').carousel()
-	</script>
-
-</body>
-</html>
+{% endblock %}
