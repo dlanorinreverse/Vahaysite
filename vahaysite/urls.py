@@ -23,6 +23,9 @@ from . import views
 urlpatterns = [
    	url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^world-data/', views.world_data, name='world_data'),
+    url(r'^vahay-data/', views.vahay_data, name='vahay_data'),
+
 	url(r'^$', views.home, name='home'),
 	url(r'^sign-out/$', views.sign_out, name='sign_out'),
     url(r'^(?P<username>\w+)/$', views.profile, name='profile'),

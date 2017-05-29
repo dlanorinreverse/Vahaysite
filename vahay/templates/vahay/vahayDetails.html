@@ -11,8 +11,8 @@
 		{% if images.count <= 0 %}
 		<p style="text-align: center;">No images to show</p>
 		{% else %}
-			<div id="carousel" class="carousel slide" data-ride="carousel">
-				<div class="carousel-inner" role="listbox">
+			<div id="vahay_carousel" class="carousel slide" data-ride="carousel">
+				<div id="vahay_carousel-inner" class="carousel-inner" role="listbox">
 				  <div class="item active">
 						<img src="{{ images.0.link }}" alt="image">
 				  </div>
@@ -92,8 +92,8 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6">
-							<p><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Location: {{ vahay.location }}</p>
+						<div class="col-md-12">
+							<p><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Address: {{ vahay.address }}</p>
 						</div>
 					</div>
 					<div class="row">

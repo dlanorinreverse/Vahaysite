@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'leaflet',
 
     'vahaysite',
     'vahay',
@@ -77,12 +79,25 @@ WSGI_APPLICATION = 'vahaysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'vahay',
+        'USER': 'postgres', 
+        'HOST': 'localhost',
+        'PASSWORD': 'postgres',
+        'POST': '5432',
     }
 }
+
 
 
 # Password validation
@@ -122,3 +137,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (10.31672, 123.89071),
+    'DEFAULT_ZOOM': 13,
+    'MAX_ZOOM': 20,
+    'MIN_ZOOM': 3,
+    'SCALE': 'both',
+    'ATTRIBUTION_PREFIX': 'Inspired by life in GIS'
+}

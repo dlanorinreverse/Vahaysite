@@ -7,12 +7,12 @@
 	font-family: 'Satisfy', cursive;
 }
 
-#carousel{
+#vahay_carousel{
 	width: 720px; 
 	margin: 0 auto;
 }
 
-.carousel-inner{
+#vahay_carousel-inner{
 	max-height: 400px !important;
 }
 
@@ -53,18 +53,45 @@
 	font-size: 2em;
 }
 
-.manage_vahay li{
-	font-family: 'Roboto Slab', serif;
-	font-size: 1.1em;
-}
-
 .profile_info p{
 	font-family: 'Roboto Slab', serif;
 	font-size: 1.1em;
 }
 
+.login{
+	position: absolute;
+	top:10px;
+}
 
 
+html,
+body {
+    height: 100%;
+}
 
+.carousel,
+.item,
+.active {
+    height: 100%;
+}
 
+.carousel-inner {
+    height: 100%;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+footer {
+    margin: 50px 0;
+}
 

@@ -1,11 +1,82 @@
 {% extends 'base.html' %}
-	
+{% load static %}
+
+{% block head %} 
+	{% load leaflet_tags %}
+	{% leaflet_css %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'vahaysite/leaflet-grouplayercontrol/leaflet.groupedlayercontrol.min.css' %}">
+	<style type="text/css">
+		body {
+		  position:relative;
+			 height: 100vh;			}
+
+		#gis{
+		  position: absolute;
+		  top: 4.3em;
+		  bottom: 0;
+		  right: 0;
+		  left: 0;
+		}
+	</style>
+{% endblock %}
+
+
 {% block body %}
-	<h1>Homepage</h1><br>
+	<!-- <h1>Homepage</h1><br>
 	<ul>
 		{% for vahay in all_vahay %}
 			<li><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></li>
 		{% endfor %}
-	</ul>
+	</ul> -->
+
+	<br>
+	<script type="text/javascript">
+		function our_layers(map,options){
+			var osm = 'http://{s}.tile.openstreetmap.org/{z}{y}{x}.png'
+
+			var datasets = new L.GeoJSON.AJAX("{% url 'world_data' %}",{
+			});
+
+			var points = new L.GeoJSON.AJAX("{% url 'vahay_data' %}",{
+				onEachFeature: function(feature,layer){
+					var vahay_name = feature.properties.name.toString();
+					var vahay_category = feature.properties.category.toString().toUpperCase();
+					var vahay_votes = feature.properties.vote.toString();
+					var vahay_id = parseInt(feature.properties.pk);
+					var url_mask = "{% url 'vahay:vahay_details' pk=12345 %}".replace(/12345/, vahay_id.toString());
+
+					layer.bindPopup("<a href=" + url_mask + "><strong>"+vahay_name+"</strong>"+"</a><br>"+"Category: " + vahay_category
+						+ "<br>"+"Votes: " + vahay_votes);
+				}
+			});
+
+			datasets.addTo(map);
+			points.addTo(map);
+
+			var baseLayers = {
+			"OSM": osm
+			}
+
+			var groupedOverlays = {
+				"Layers": {
+					"world": datasets,
+				},
+				"Points of Interest": {
+				 "vahay": points
+				}
+			};
+
+			L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
+		}
+	</script>
+
+	{% leaflet_map "gis" callback="window.our_layers" %}
 {% endblock %}
 
+
+{% block load_js %}
+	{% leaflet_js %}
+	<script type="text/javascript" src="{% static 'vahaysite/dist/leaflet.ajax.js' %}"></script>
+	<script type="text/javascript" src="{% static 'vahaysite/leaflet-grouplayercontrol/leaflet.groupedlayercontrol.min.js' %}"></script>
+{% endblock %}

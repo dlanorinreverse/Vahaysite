@@ -4,15 +4,27 @@ from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.core.serializers import serialize
+from django.http import HttpResponse
 
-from vahay.models import Vahay
+from vahay.models import Vahay, WorldBorder
+
 # Create your views here.
+
+def world_data(request):
+	world = serialize('geojson', WorldBorder.objects.all())
+	return HttpResponse(world, content_type='json')
+
+
+def vahay_data(request):
+	vahay = serialize('geojson', Vahay.objects.all())
+	return HttpResponse(vahay, content_type='json')
 
 
 def home(request):
 	all_vahay = Vahay.objects.all()
-	context={
-		'all_vahay': all_vahay
+	context = {
+		"all_vahay": all_vahay
 	}
 
 	if request.user.is_authenticated:

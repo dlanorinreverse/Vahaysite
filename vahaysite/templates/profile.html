@@ -22,11 +22,7 @@
 			<div class="panel-body">
 				<h4>Vahay you manage</h4><br>
 				{% for vahay in vahays %}
-					<ul>
-						<li>
-							<a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a>
-						</li>
-					</ul>
+					<p><a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay }}</a></p>
 				{% endfor %}
 
 				{% if user.vahay_set.count <= 0 %}

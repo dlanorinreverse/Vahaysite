@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.contrib.gis.geos import Point
 
 from .models import Vahay
 from .models import Review
@@ -33,10 +34,11 @@ def add_vahay(request, username):
 		rent_range = request.POST.get('rent_range')
 		category = request.POST.get('category')
 		contact_details = request.POST.get('contacts')
-		location = request.POST.get('location')
+		address = request.POST.get('address')
 		details = request.POST.get('details')
+		location = Point(123.9014053338178, 10.31127060214643)
 		Vahay.objects.create(owner=request.user, name=name, rent_range=rent_range, category=category,
-		 contact_details=contact_details, location=location, description=details)
+		 contact_details=contact_details, address=address, description=details, location=location)
 		return redirect(reverse('profile', kwargs={'username': request.user.username}))
 
 	return render(request, 'vahay/addVahay.html')
