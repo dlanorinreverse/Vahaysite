@@ -8,8 +8,7 @@
 }
 
 #vahay_carousel{
-	width: 720px; 
-	margin: 0 auto;
+	width: 725px;
 }
 
 #vahay_carousel-inner{
@@ -33,10 +32,9 @@
 }
 
 .vahay_title h3{
-	padding: 10px;
-	padding-top: 20px;
 	font-family: 'Roboto Slab', serif;
 	text-align: center;
+	margin-top: 50px;
 }
 
 .profile_info .panel{
@@ -86,7 +84,7 @@
 
 .signup_label{
 	font-family: 'Roboto Slab', serif;
-	font-size: 1.5em;
+	font-size: 1.5em;#f2f2f2;
 	color: white;
 	padding: 10px;
 }
@@ -94,6 +92,7 @@
 html,
 body {
     height: 100%;
+    background-color: #f2f2f2;
 }
 
 .carousel,

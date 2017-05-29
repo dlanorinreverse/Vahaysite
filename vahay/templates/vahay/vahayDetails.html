@@ -3,15 +3,14 @@
 
 {% block body %}
 
-	<section class="vahay_title container-fluid">
-	  <h3 style="text-align: center;">{{ vahay.name.upper }}
-	</section>
-
 	<section class="gallery">
+		<section class="vahay_title">
+	  		<h3>{{ vahay.name.upper }}</h3>
+		</section>
 		{% if images.count <= 0 %}
 		<p style="text-align: center;">No images to show</p>
 		{% else %}
-			<div id="vahay_carousel" class="carousel slide" data-ride="carousel">
+			<div id="vahay_carousel" class="carousel slide col-lg-6 col-lg-offset-3" data-ride="carousel">
 				<div id="vahay_carousel-inner" class="carousel-inner" role="listbox">
 				  <div class="item active">
 						<img src="{{ images.0.link }}" alt="image">
@@ -109,31 +108,33 @@
 				</div>
 				</div>
 		  </div>
+	</section>
+
+	<section class="review"">
+		<div class="well col-lg-6 col-lg-offset-3">
+			<p style="text-align: center; font-size: 1.5em;">Reviews</p>
+			<form action="{% url 'vahay:add_comment' vahay.pk %}?next={{ request.path }}" method="POST">
+				 {% csrf_token %}
+				 <textarea name="content" id="" cols="10" rows="3" class="form-control" placeholder="comment"></textarea>
+				 <button class="btn btn-primary tweet-btn">comment</button>
+			</form><br>
+			{% for review in reviews %}
+				<div class="panel panel-default">
+					  <div class="panel-body">
+							{{ review.content }}
+					  </div>
+					  <div class="panel-footer">
+							<a href="{% url 'profile' user.username %}">{{ review.user.get_full_name }}</a>
+							<span class="text-muted">{{ review.when_created|date:'D M d, Y f A' }}</span>
+					  </div>
+				</div>
+			{% endfor %}
+			{% if reviews.count <= 0 %}
+				 <p style="text-align: center;">No reviews yet</p>
+			{% endif %}
+		</div>
 	 </section>
 
-	 <section class="review"">
-		  <div class="well col-lg-6 col-lg-offset-3" style="margin-top: 100px;">
-				<p style="text-align: center; font-size: 1.5em;">Reviews</p>
-				<form action="{% url 'vahay:add_comment' vahay.pk %}?next={{ request.path }}" method="POST">
-					 {% csrf_token %}
-					 <textarea name="content" id="" cols="10" rows="3" class="form-control" placeholder="comment"></textarea>
-					 <button class="btn btn-primary tweet-btn">comment</button>
-				</form><br>
-				{% for review in reviews %}
-					<div class="panel panel-default">
-						  <div class="panel-body">
-								{{ review.content }}
-						  </div>
-						  <div class="panel-footer">
-								<a href="{% url 'profile' user.username %}">{{ review.user.get_full_name }}</a>
-								<span class="text-muted">{{ review.when_created|date:'D M d, Y f A' }}</span>
-						  </div>
-					</div>
-				{% endfor %}
-				{% if reviews.count <= 0 %}
-					 <p style="text-align: center;">No reviews yet</p>
-				{% endif %}
-		 </div>
-	 </section>
+	
 
 {% endblock %}
