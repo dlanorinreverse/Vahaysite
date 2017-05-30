@@ -22,7 +22,6 @@ def search_vahay(request):
 		for vahay in vahays:
 			if str(address).upper() in str(vahay.address).upper():
 				result.append(vahay)
-		print len(result)
 		context = {
 			'result': result,
 			'address': address
