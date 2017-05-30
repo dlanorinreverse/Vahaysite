@@ -136,3 +136,12 @@ footer {
 	font-family: 'Roboto Slab', serif;
 	font-size: 1.1em;
 }
+
+.slogan{
+	position: absolute;
+	font-family: 'Roboto Slab', serif;
+	font-size: 2em;
+	top: 450px;
+	color: white;
+	padding-left: 50px;
+}
