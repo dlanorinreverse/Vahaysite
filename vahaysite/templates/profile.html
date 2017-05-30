@@ -30,7 +30,7 @@
 				{% endfor %}
 
 				{% if user.vahay_set.count <= 0 %}
-					<p>You don't have Vahay to manage</p>
+					<p><em>You don't have Vahay to manage</em></p>
 				{% endif %}<br>
 				<a href="{% url 'vahay:add_vahay' user.username %}" class="btn btn-sm btn-primary col-lg-offset-10"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Vahay</a>
 			</div>

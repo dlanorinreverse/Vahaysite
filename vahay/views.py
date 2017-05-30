@@ -10,6 +10,27 @@ from .models import Review
 from .models import Image
 # Create your views here.
 
+
+def search_vahay(request):
+	if not request.user.is_authenticated:
+		return redirect('/')
+
+	if request.method == "POST":
+		result = []
+		address = request.POST.get('search')
+		vahays = Vahay.objects.all()
+		for vahay in vahays:
+			if str(address).upper() in str(vahay.address).upper():
+				result.append(vahay)
+		print len(result)
+		context = {
+			'result': result,
+			'address': address
+		}
+		return render(request, 'vahay/searchResults.html', context=context)
+
+	return redirect('/')
+
 def vahay_details(request, pk):
 	if not request.user.is_authenticated:
 		return redirect('/')

@@ -33,7 +33,7 @@ def sign_up(request):
 			return render(request, 'registration/signup.html', context=context)
 
 		if not password == r_password:
-			context['pass_error'] = "Password do not match"
+			context['pass_error'] = "Password does not match!"
 			return render(request, 'registration/signup.html', context=context)
 
 		User.objects.create_user(username=username, email=email, first_name=f_name, last_name=l_name, password=password)

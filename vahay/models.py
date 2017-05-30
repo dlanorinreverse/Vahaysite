@@ -35,14 +35,13 @@ class Vahay(models.Model):
 	contact_details = models.CharField(max_length=100)
 	vote = models.IntegerField(default=0)
 	available = models.BooleanField(default=1)
-	description = models.CharField(max_length=500, null=True)
-	address = models.CharField(max_length=500, null=True)
+	description = models.CharField(max_length=500)
+	address = models.CharField(max_length=500)
 	location = models.PointField(srid=4326)
 	objects = models.GeoManager()
 
-
 	def __str__(self):
-		return self.name
+		return self.name + " - " + self.owner.username
 
 	def isAvailable(self):
 		if self.available == 1:

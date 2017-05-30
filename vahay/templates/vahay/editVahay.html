@@ -8,29 +8,25 @@
 			<form class="form-horizontal" action="{% url 'vahay:edit_vahay' vahay.pk %}" method="POST">
 				{% csrf_token %}
 				<div class="form-group">
-					<input type="text" name="vahay_name" class="form-control" placeholder="name" value="{{ vahay.name }}">
+					<input type="text" name="vahay_name" class="form-control" placeholder="Name" value="{{ vahay.name }}" required>
 				</div>
 				<div class="form-group">
-					<input type="text" name="category" class="form-control" placeholder="category" value="{{ vahay.category }}">
+					<input type="text" name="category" class="form-control" placeholder="Category" value="{{ vahay.category }}" required>
 				</div>
 				<div class="form-group">
-					<input type="text" name="contacts" class="form-control" placeholder="contact details" value="{{ vahay.contact_details }}">
+					<input type="text" name="contacts" class="form-control" placeholder="Contact Details" value="{{ vahay.contact_details }}" required>
 				</div>
 				<div class="form-group">
-					<input type="text" name="address" class="form-control" placeholder="address" value="{{ vahay.address }}">
+					<input type="text" name="address" class="form-control" placeholder="Address" value="{{ vahay.address }}" required>
 				</div>
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon" id="rent">Php</span>
-						<input type="text" name="rent_range" class="form-control" placeholder="rent-range" value="{{ vahay.rent_range }}" aria-describedby="rent">
+						<input type="text" name="rent_range" class="form-control" placeholder="Rent-range" value="{{ vahay.rent_range }}" aria-describedby="rent" required>
 					</div>
 				</div>
 				<div class="form-group">
-					{% if vahay.description is None %}
-						<input type="text" name="description" class="form-control" placeholder="description">
-					{% else %}
-						<input type="text" name="description" class="form-control" placeholder="description" value="{{ vahay.description }}">
-					{% endif %}
+					<input type="text" name="description" class="form-control" placeholder="Description" value="{{ vahay.description }}" required>
 				</div>
 				{% if vahay.isAvailable %}
 				   <div class="form-group">

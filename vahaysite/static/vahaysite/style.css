@@ -77,14 +77,14 @@
 
 .login_label{
 	font-family: 'Roboto Slab', serif;
-	font-size: 1.5em;
+	font-size: 1.7em;
 	color: white;
 	padding: 10px;
 }
 
 .signup_label{
 	font-family: 'Roboto Slab', serif;
-	font-size: 1.5em;#f2f2f2;
+	font-size: 1.7em;
 	color: white;
 	padding: 10px;
 }
@@ -122,4 +122,17 @@ footer {
 .col-centered{
     float: none;
     margin: 0 auto;
+}
+
+.result_header p{
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.8em;
+	text-align: center;
+	margin-top: 40px;
+	padding: 10px;
+}
+
+.result_details{
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.1em;
 }

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+	{% if result|length <= 0 %}
+		<div class="result_header">
+			<p>Sorry. There were no Vahay/s in "{{ address }}"</p>
+		</div>
+	{% else %}
+		<div class="result_header">
+			<p>{{ result|length }} Vahay/s found in "{{ address }}"</p>
+		</div>
+		{% for vahay in result %}
+			<div class="result_details well col-lg-6 col-lg-offset-3">
+				<p>Name: <a href="{% url 'vahay:vahay_details' vahay.pk %}">{{ vahay.name }}</a></p>
+				<p>Address: {{ vahay.address }}</p>
+				<p>Category: {{ vahay.category }}</p>
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endblock %}
